@@ -32,7 +32,9 @@ app.locals.querystring = require('querystring');
 
 
 mongoose.Promise = global.Promise; 
-const connStr = 'mongodb://localhost/mjdb2';
+const connStr = (process.env.NODE_ENV == 'production')?
+	'mongodb://kihyeon:rlgusdn1452@ds133796.mlab.com:33796/kihyeon' :
+	'mongodb://localhost/mjdb2';
 
 mongoose.connect(connStr, {useMongoClient: true });
 mongoose.connection.on('error', console.error);
